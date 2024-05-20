@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../KU_ML"
+		},
+		{
+			"name": "hyper-personalized_car_accident_prediction",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
