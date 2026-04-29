@@ -126,10 +126,10 @@ The dataset originates from auto-insurance customer records and contains:
 
 | File | Description | Size |
 | --- | --- | --- |
-| `고객별 사고 발생률 예측 모델링_1.csv` | Primary customer dataset | \~95 MB |
-| `고객별 사고 발생률 예측 모델링_2.csv` | Supplementary dataset #2 | \~8 MB |
-| `고객별 사고 발생률 예측 모델링_3.csv` | Supplementary dataset #3 | \~4 MB |
-| `고객별 사고 유무 기본 데이터.csv` | Base accident occurrence data | \~25 MB |
+| `(자동차보험) 고객별 사고 발생률 예측 모델링_1.csv` | Primary customer dataset | \~95 MB |
+| `(자동차보험) 고객별 사고 발생률 예측 모델링_2.csv` | Supplementary dataset #2 | \~8 MB |
+| `(자동차보험) 고객별 사고 발생률 예측 모델링_3.csv` | Supplementary dataset #3 | \~4 MB |
+| `(자동차보험) 고객별 사고 유무 기본 데이터.csv` | Base accident occurrence data | \~25 MB |
 | `base_process.csv` | Preprocessed base dataset | \~17 MB |
 
 ### How to Obtain the Data
