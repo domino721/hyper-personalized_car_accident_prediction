@@ -193,8 +193,6 @@ This project is for academic and research purposes. Please contact the authors f
 
 ---
 
-## 🇰🇷 한국어 요약
-
 본 프로젝트는 자동차보험 고객 데이터를 기반으로 **개인별 사고 발생 확률을 예측**하는 초개인화 모델링 파이프라인입니다.
 
 - **데이터**: 고객 인구통계, 차량 정보, 보험 특약, 사고 이력 등
