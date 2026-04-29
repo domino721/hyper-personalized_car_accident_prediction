@@ -1,0 +1,64 @@
+# ============================================================
+# .gitignore - Hyper-Personalized Car Accident Prediction
+# ============================================================
+
+# -------------------- Python --------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# -------------------- Jupyter Notebook --------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# -------------------- Data Files (Large) --------------------
+# Raw datasets (too large for GitHub, provide download link in README)
+Dataset/*.csv
+Dataset/*.xlsx
+Dataset/**/*.csv
+Dataset/**/*.xlsx
+
+# Preprocessing result CSVs (large intermediate files)
+Results/PreprocessingResults/*.csv
+
+# BERT training data (23MB+)
+Model/BERT/sentences.txt
+
+# -------------------- IDE / Editor --------------------
+*.code-workspace
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# -------------------- OS --------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -------------------- Virtual Environment --------------------
+venv/
+env/
+.env/
+.venv/
+
+# -------------------- Model Artifacts --------------------
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+saved_model/
+
+# -------------------- Misc --------------------
+*.log
+*.tmp
+*.bak
