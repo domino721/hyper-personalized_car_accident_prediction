@@ -25,7 +25,7 @@ This project builds a **hyper-personalized car accident prediction model** by le
 ### Key Features
 
 | Feature | Description |
-|---|---|
+| --- | --- |
 | **Multi-Model Comparison** | Systematic evaluation across 8+ algorithms |
 | **Feature Engineering** | Derived variables from accident rate time-series and customer demographics |
 | **LSTM Time-Series** | Age/gender-segmented accident rate prediction using LSTM |
@@ -39,6 +39,16 @@ This project builds a **hyper-personalized car accident prediction model** by le
 ```
 hyper-personalized_car_accident_prediction/
 │
+├── src/                            # Modular source code
+│   ├── config.py                  # Global configurations & mappings
+│   ├── data_processor.py          # Data cleaning & preprocessing logic
+│   └── model_trainer.py           # Model training & evaluation logic
+│
+├── tests/                          # Automated unit tests
+│   └── test_data_processor.py     # Tests for data processing logic
+│
+├── main.py                         # Professional pipeline entry point
+│
 ├── Dataset/                        # Raw & processed datasets
 │   ├── 사고율 LSTM 학습용 Dataset/ # Accident rate data for LSTM training
 │   └── 파생변수 Dataset/          # Derived feature datasets
@@ -49,10 +59,10 @@ hyper-personalized_car_accident_prediction/
 │   ├── EDA_R.ipynb
 │   └── EDA_WJ.ipynb
 │
-├── Model/                          # Model implementations
+├── Model/                          # Model implementations (Notebooks)
 │   ├── Preprocess/                 # Data preprocessing pipelines
 │   │   └── Labeling/              # Target labeling logic
-│   ├── LR/                        # Logistic Regression (multi-round tuning)
+│   ├── LR/                        # Logistic Regression
 │   ├── KNN/                       # K-Nearest Neighbors
 │   ├── SVM/                       # Support Vector Machine
 │   ├── RF/                        # Random Forest
@@ -63,8 +73,8 @@ hyper-personalized_car_accident_prediction/
 ├── Ensemble/                       # Ensemble model for final prediction
 │
 ├── Results/                        # Output & evaluation results
-│   ├── LR/                        # Logistic Regression results
-│   └── PreprocessingResults/      # Preprocessed dataset outputs
+│   ├── rf_roc_curve.png           # Example modular pipeline output
+│   └── rf_confusion_matrix.png    # Example modular pipeline output
 │
 ├── requirements.txt                # Python dependencies
 ├── .gitignore                      # Git ignore rules
@@ -78,7 +88,7 @@ hyper-personalized_car_accident_prediction/
 ### Classical ML Models
 
 | Model | Description | Notebook(s) |
-|---|---|---|
+| --- | --- | --- |
 | **Logistic Regression** | Baseline + multi-round hyperparameter tuning with derived features | `Model/LR/` |
 | **K-Nearest Neighbors** | Distance-based classification baseline | `Model/KNN/` |
 | **Support Vector Machine** | Kernel-based classification with GradBoost comparison | `Model/SVM/` |
@@ -89,7 +99,7 @@ hyper-personalized_car_accident_prediction/
 ### Deep Learning Models
 
 | Model | Description | Notebook(s) |
-|---|---|---|
+| --- | --- | --- |
 | **LSTM** | Time-series accident rate prediction segmented by age/gender | `Model/LSTM/` |
 | **BERT** | Custom WordPiece tokenization for text-feature extraction | `Model/BERT/` |
 
@@ -101,7 +111,7 @@ Combined prediction using the best-performing models (`Ensemble/`).
 
 ## Dataset
 
-> ⚠️ **Note**: Dataset files are excluded from this repository due to size constraints (total ~170 MB). See instructions below.
+> ⚠️ **Note**: Dataset files are excluded from this repository due to size constraints (total \~170 MB). See instructions below.
 
 ### Source Data
 
@@ -115,12 +125,12 @@ The dataset originates from auto-insurance customer records and contains:
 ### File Descriptions
 
 | File | Description | Size |
-|---|---|---|
-| `고객별 사고 발생률 예측 모델링_1.csv` | Primary customer dataset | ~95 MB |
-| `고객별 사고 발생률 예측 모델링_2.csv` | Supplementary dataset #2 | ~8 MB |
-| `고객별 사고 발생률 예측 모델링_3.csv` | Supplementary dataset #3 | ~4 MB |
-| `고객별 사고 유무 기본 데이터.csv` | Base accident occurrence data | ~25 MB |
-| `base_process.csv` | Preprocessed base dataset | ~17 MB |
+| --- | --- | --- |
+| `고객별 사고 발생률 예측 모델링_1.csv` | Primary customer dataset | \~95 MB |
+| `고객별 사고 발생률 예측 모델링_2.csv` | Supplementary dataset #2 | \~8 MB |
+| `고객별 사고 발생률 예측 모델링_3.csv` | Supplementary dataset #3 | \~4 MB |
+| `고객별 사고 유무 기본 데이터.csv` | Base accident occurrence data | \~25 MB |
+| `base_process.csv` | Preprocessed base dataset | \~17 MB |
 
 ### How to Obtain the Data
 
@@ -153,14 +163,34 @@ source venv/bin/activate        # Linux/macOS
 pip install -r requirements.txt
 ```
 
-### Workflow
+### 1. Modular Pipeline (Recommended)
 
+For a professional and automated execution of the preprocessing and model training pipeline:
+
+```bash
+# Run the complete pipeline
+py main.py
 ```
-1. EDA          →  Run notebooks in EDA/ to understand data distributions
-2. Preprocess   →  Run Model/Preprocess/ notebooks for feature engineering
-3. Train        →  Train individual models in Model/<MODEL_NAME>/
-4. Ensemble     →  Combine predictions in Ensemble/
-5. Evaluate     →  Check results in Results/
+
+This will automatically load the data, clean it using `DataProcessor`, and train/evaluate a model using `ModelTrainer`. Results and plots will be saved in the `Results/` directory.
+
+### 2. Manual Workflow (Notebooks)
+
+If you prefer exploring the logic step-by-step:
+
+1. **EDA**: Run notebooks in `EDA/` to understand data distributions.
+2. **Preprocess**: Run `Model/Preprocess/` notebooks for feature engineering.
+3. **Train**: Train individual models in `Model/<MODEL_NAME>/`.
+4. **Ensemble**: Combine predictions in `Ensemble/`.
+5. **Evaluate**: Check results in `Results/`.
+
+### 3. Running Tests
+
+To ensure the modular components are working correctly:
+
+```bash
+# Run unit tests
+py tests/test_data_processor.py
 ```
 
 ---
@@ -178,12 +208,7 @@ Detailed performance metrics and visualizations are available within each model'
 
 ## Tech Stack
 
-![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-Boosting-006400?style=flat-square)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-BERT-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+<img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" /><img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white" alt="Jupyter" /><img src="https://img.shields.io/badge/scikit--learn-ML-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit-learn" /><img src="https://img.shields.io/badge/XGBoost-Boosting-006400?style=flat-square" alt="XGBoost" /><img src="https://img.shields.io/badge/TensorFlow-LSTM-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow" /><img src="https://img.shields.io/badge/PyTorch-BERT-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch" />
 
 ---
 
@@ -192,8 +217,6 @@ Detailed performance metrics and visualizations are available within each model'
 This project is for academic and research purposes. Please contact the authors for commercial use.
 
 ---
-
-## 🇰🇷 한국어 요약
 
 본 프로젝트는 자동차보험 고객 데이터를 기반으로 **개인별 사고 발생 확률을 예측**하는 초개인화 모델링 파이프라인입니다.
 
